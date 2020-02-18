@@ -6,6 +6,8 @@ for (var _i = 0, numberList_1 = numberList; _i < numberList_1.length; _i++) {
     for (var _a = 0, numberList_2 = numberList; _a < numberList_2.length; _a++) {
         var y = numberList_2[_a];
         result += ("<td>" + y + " x " + i + " = " + (y * i) + "</td>");
+        console.log(i + " i");
+        console.log(y + " y");
     }
     result += "</tr>";
 }

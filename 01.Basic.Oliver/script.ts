@@ -6,6 +6,8 @@ for (let i of numberList) {
 	result += "<tr><td><strong>" + i + "</strong></td>"
 	for (let y of numberList){
 		result += ("<td>" + y + " x " + i + " = " + (y*i) + "</td>")
+		console.log(i +" i");
+		console.log(y +" y");
 	}
 	result += "</tr>"
 };
