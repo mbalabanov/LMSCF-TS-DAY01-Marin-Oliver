@@ -1,22 +1,7 @@
-/*───────────────────────────────────────────────────────┐
-│       _                   _____           _       _    │
-│      | |                 / ____|         (_)     | |   │
-│      | | __ ___   ____ _| (___   ___ _ __ _ _ __ | |_  │
-│  _   | |/ _` \ \ / / _` |\___ \ / __| '__| | '_ \| __| │
-│ | |__| | (_| |\ V / (_| |____) | (__| |  | | |_) | |_  │
-│  \____/ \__,_| \_/ \__,_|_____/ \___|_|  |_| .__/ \__| │
-│                                            |_|         │
-│               __  __            _                      │
-│              |  \/  |          (_)                     │
-│              | \  / | __ _ _ __ _ _ __                 │
-│              | |\/| |/ _` | '__| | '_ \                │
-│              | |  | | (_| | |  | | | | |               │
-│              |_|  |_|\__,_|_|  |_|_| |_|               │
-└───────────────────────────────────────────────────────*/
 
 /* Initializing variables */
 let sortByLikes = false;
-let movieListContent = '';
+let foodListContent = '';
 let sequence = [];
 
 /* Generates the movie list by checking the settings for sorting.
@@ -24,60 +9,60 @@ let sequence = [];
     If "unsorted" is selected, then the array in the variable with the JSON data is sorted by item ID.
     Then the JSON data is iterated. The constructed HTML is stored in a variable and rendering it into the div.
     Each movie item has an accompanying modal that is invisible to the user, until they click on a movie.*/
-function generateMovies() {
-    movieListContent = '';
-    $('#moviecards').replaceWith(`<div class="row text-center" id="moviecards"></div>`);
+function generateFood() {
+    foodListContent = '';
+    $('#foodcards').replaceWith(`<div class="row text-center" id="foodcards"></div>`);
     if (sortByLikes == true) {
         sequence = [];
-        moviedata.movies.sort(function(a, b) { return b.likes - a.likes });
-        for (let sortThrough in moviedata.movies) {
-            sequence.push(moviedata.movies[sortThrough].id);
+        menudata.food.sort(function(a, b) { return b.likes - a.likes });
+        for (let sortThrough in menudata.food) {
+            sequence.push(menudata.food[sortThrough].id);
         }
     } else if (sortByLikes == false) {
         sequence = [];
-        moviedata.movies.sort(function(c, d) { return c.id - d.id });
-        for (let sortBy in moviedata.movies) {
-            sequence.push(moviedata.movies[sortBy].id);
+        menudata.food.sort(function(c, d) { return c.id - d.id });
+        for (let sortBy in menudata.food) {
+            sequence.push(menudata.food[sortBy].id);
         }
     };
     for (let tempID in sequence) {
-        movieListContent += `
-        <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-4 bg-dark">
+        foodListContent += `
+        <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-4 bg-warning">
             <div class="row no-gutters">
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <img src="${moviedata.movies[tempID].image}" class="card-img" alt="${moviedata.movies[tempID].name}" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <img src="${menudata.food[tempID].image}" class="card-img" alt="${menudata.food[tempID].name}" data-toggle="modal" data-target="#modal${menudata.food[tempID].id}">
                 </div>
-                <div class="col-lg-9 col-md-8 col-sm-12">
+                <div class="col-lg-7 col-md-7 col-sm-12">
                     <div class="card-body text-left">
-                        <h5 class="card-title" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">${moviedata.movies[tempID].name}</h5>
-                        <p class="card-text text-truncate" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}"><small>${moviedata.movies[tempID].info}</small></p>
+                        <h5 class="card-title" data-toggle="modal" data-target="#modal${menudata.food[tempID].id}">${menudata.food[tempID].name}</h5>
+                        <p class="card-text text-truncate" data-toggle="modal" data-target="#modal${menudata.food[tempID].id}"><small>${menudata.food[tempID].info}</small></p>
                     </div>
                     <div class="card-footer">
-                        <h4 class="card-text text-right text-success likeMe" id="${tempID}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-success rounded-circle">${moviedata.movies[tempID].likes}</span></h4>
+                        <h4 class="card-text text-right text-dark likeMe" id="${tempID}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-dark rounded-circle">${menudata.food[tempID].likes}</span></h4>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modal${moviedata.movies[tempID].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal${menudata.food[tempID].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-secondary text-white">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">${moviedata.movies[tempID].name}</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">${menudata.food[tempID].name}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p><img src="${moviedata.movies[tempID].image}" class="img-fluid close" data-dismiss="modal" alt="${moviedata.movies[tempID].name}"></p>
-                        <h3>${moviedata.movies[tempID].name}</h3>
-                        <p>${moviedata.movies[tempID].info}</p>
+                        <p><img src="${menudata.food[tempID].image}" class="img-fluid close" data-dismiss="modal" alt="${menudata.food[tempID].name}"></p>
+                        <h3>${menudata.food[tempID].name}</h3>
+                        <p>${menudata.food[tempID].info}</p>
                     </div>
                 </div>
             </div>
         </div>
         `;
     };
-    $('#moviecards').replaceWith(`<div class="row text-center" id="moviecards">${movieListContent}</div>`);
+    $('#foodcards').replaceWith(`<div class="row text-center" id="foodcards">${foodListContent}</div>`);
     setEventListeners();
 };
 
@@ -88,22 +73,22 @@ function generateMovies() {
     This rendering also changes the order of the items, if "sort by likes" is selected. */
 function setEventListeners() {
     $('.likeMe').click(function() {
-        moviedata.movies[this.id].likes ++;
-        generateMovies();
+        menudata.food[this.id].likes ++;
+        generateFood();
     });
 };
 
 /* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to TRUE. */
 $('#sortLikesAscending').click(function() {
     sortByLikes = true;
-    generateMovies();
+    generateFood();
     $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Sorted by likes</small></div>`);
 });
 
 /* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to FALSE. */
 $('#doNotSort').click(function() {
     sortByLikes = false;
-    generateMovies();
+    generateFood();
     $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Unsorted</small></div>`);
 });
 

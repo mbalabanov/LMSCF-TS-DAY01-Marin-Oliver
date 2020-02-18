@@ -1,5 +1,5 @@
 
-let ^menudata = JSON.parse(`{
+let menudata = JSON.parse(`{
     "food": [
         {
         "id": "0",
@@ -12,7 +12,7 @@ let ^menudata = JSON.parse(`{
         "id": "1",
         "name": "Wiener Schnitzel mit Erdapfelsalat",
         "info": "Wiener Schnitzel ist ein dünnes, paniertes und ausgebackenes Schnitzel aus Kalbfleisch. Es gehört zu den bekanntesten Spezialitäten der Wiener Küche.",
-        "image": "img/02_wiener_schnitzel.jpgZ02_wiener_schnitzel.jpg",
+        "image": "img/02_wiener_schnitzel.jpg",
         "likes": "0"
         },
         {
