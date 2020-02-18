@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="64x64">
+    <!-- Please note that only Bootstrap default CSS is used and no style customizations. -->
+
+    <!-- File containing the JSON data -->
+    <script src="json/food.js"></script>
+
+    <style>
+        .bg-restaurant {
+            background-image:  url("img/header-bg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 40rem;
+            background-position: center;
+        }
+        .bg-restaurant h1 {
+            font-size:  8rem;
+            text-shadow: 0 0 8px black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Additional div containing the page except for the footer. This pushes the footer to the bootom of the page.  -->
+<div class="d-flex flex-column bg-secondary" style="min-height: 100vh">
+
+    <!-- Header with nav (removed responsive burger menu, because nav only has one menu item)-->
+    <header class="text-white text-center">
+        <div class="p-4 bg-restaurant">
+            <h1 class="text-white m-0 p-5 m-5">Restaurant<br>Oliver & Co.</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <ul class="navbar-nav container">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">        
+        <div class="text-white p-4 text-center">
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <h2 class="text-white m-0">Our Menu</h2>
+                </div>
+
+                <!-- Sorting menu and the sorting status -->
+                <div class="col-lg-3 text-center">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" id="sortLikesAscending">Sort by most likes</a>
+                            <a class="dropdown-item" id="doNotSort">No sorting</a>
+                        </div>
+                    </div>
+                    <div id="sortStatus"><small>Unsorted</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Div is populated with the movies from the JSON data in the file movies.js.
+            The function that populates the div is in the file myscript.js-->
+        <div class="row text-center" id="foodcards"></div>
+
+    </main>
+</div>
+
+    <footer class="py-4 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Viennese Cuisine</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript dependencies-->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/myscript.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            generateFood();
+        });
+    </script>
+
+  </body>
+</html>
+<!-- Exercise solved by Marin on Saturday, February 15, 2020 -->
