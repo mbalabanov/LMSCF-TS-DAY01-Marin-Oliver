@@ -1,0 +1,12 @@
+.bg-restaurant {
+    background-image:  url("../img/header-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40rem;
+    background-position: center;
+    margin-bottom: 3rem;
+}
+.bg-restaurant h1 {
+    font-size:  8rem;
+    text-shadow: 0 0 8px black;
+}
