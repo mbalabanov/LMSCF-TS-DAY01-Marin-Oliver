@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Test</title>
+
+</head>
+<body>
+	<div id="test"></div>
+	<div id="hudriwudri"></div>
+
+	<script>
+
+		let numbersList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+		let results = '';
+
+		for (let i of numbersList) {
+			for (let j of numbersList) {
+				results += i + ' x ' + j + ' = ' + (i*j) + '<br>';
+			}
+		};
+
+		document.getElementById('hudriwudri').innerHTML = results;
+
+	</script>	
+</body>
+</html>
